@@ -1,9 +1,10 @@
 package entity;
 
-public class User2 {
+public class User3 {
 	private String uid;
 	private String name;
 	private String birth;
+	private String hp;
 	private String addr;
 	
 	public String getUid() {
@@ -24,6 +25,12 @@ public class User2 {
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
+	public String getHp() {
+		return hp;
+	}
+	public void setHp(String hp) {
+		this.hp = hp;
+	}
 	public String getAddr() {
 		return addr;
 	}
@@ -32,10 +39,8 @@ public class User2 {
 	}
 	@Override
 	public String toString() {
-		return "User2 [uid=" + uid + ", name=" + name + ", birth=" + birth + ", addr=" + addr + "]";
+		return "User3 [uid=" + uid + ", name=" + name + ", birth=" + birth + ", hp=" + hp + ", addr=" + addr + "]";
 	}
-	
-	
 	
 	
 }
