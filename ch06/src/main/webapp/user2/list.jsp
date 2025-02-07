@@ -1,17 +1,25 @@
+<%@page import="javax.sql.*"%>
+<%@page import="javax.naming.*"%>
 <%@page import="entity.User2"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.*"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	String host = "jdbc:mysql://127.0.0.1:3306/studydb";
-	String user = "root";
-	String pass = "1234";
+	//String host = "jdbc:mysql://127.0.0.1:3306/studydb";
+	//String user = "root";
+	//String pass = "1234";
 
 	List<User2> users = new ArrayList<>();
 
 try{
-	Class.forName("com.mysql.cj.jdbc.Driver");
-	Connection conn = DriverManager.getConnection(host, user, pass);
+	//Class.forName("com.mysql.cj.jdbc.Driver");
+	//Connection conn = DriverManager.getConnection(host, user, pass);
+	
+	Context ctx = (Context) new InitialContext().lookup("java:comp/env");
+	DataSource ds = (DataSource)ctx.lookup("jdbc/studydb");
+	Connection conn = ds.getConnection();
+	
+	
 	Statement stmt =  conn.createStatement();
 	ResultSet rs = stmt.executeQuery("select * from `user2`");
 	

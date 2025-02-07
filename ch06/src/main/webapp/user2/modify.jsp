@@ -1,18 +1,24 @@
+<%@page import="javax.sql.*"%>
+<%@page import="javax.naming.*"%>
 <%@page import="entity.User2"%>
 <%@page import="java.sql.*"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String uid = request.getParameter("uid");
 
-String host = "jdbc:mysql://127.0.0.1:3306/studydb";
-String user = "root";
-String pass = "1234";
+//String host = "jdbc:mysql://127.0.0.1:3306/studydb";
+//String user = "root";
+//String pass = "1234";
 
 User2 user2= null;
 
 try{
-	Class.forName("com.mysql.cj.jdbc.Driver");
-	Connection conn = DriverManager.getConnection(host, user, pass);
+	//Class.forName("com.mysql.cj.jdbc.Driver");
+	//Connection conn = DriverManager.getConnection(host, user, pass);
+	
+	Context ctx = (Context) new InitialContext().lookup("java:comp/env");
+	DataSource ds = (DataSource)ctx.lookup("jdbc/studydb");
+	Connection conn = ds.getConnection();
 	
 	String sql = "select * from `user2` where `uid`=?";
 	PreparedStatement psmt = conn.prepareStatement(sql);
@@ -42,7 +48,7 @@ try{
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>user1::list</title>
+	<title>user2::수정</title>
 </head>
 <body>
 	<h3>user2수정</h3>

@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>user5::list</title>
+	<title>user5::등록</title>
 </head>
 <body>
 	<h3>user5등록</h3>

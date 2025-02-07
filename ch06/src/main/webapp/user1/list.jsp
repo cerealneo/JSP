@@ -1,17 +1,28 @@
+<%@page import="javax.sql.*"%>
+<%@page import="javax.naming.*"%>
 <%@page import="entity.user1"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.*"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	String host = "jdbc:mysql://127.0.0.1:3306/studydb";
-	String user = "root";
-	String pass = "1234";
+	//String host = "jdbc:mysql://127.0.0.1:3306/studydb";
+	//String user = "root";
+	//String pass = "1234";
 
 	List<user1> users = new ArrayList<>();
 
 try{
-	Class.forName("com.mysql.cj.jdbc.Driver");
-	Connection conn = DriverManager.getConnection(host, user, pass);
+	//Class.forName("com.mysql.cj.jdbc.Driver");
+	//Connection conn = DriverManager.getConnection(host, user, pass);
+	
+	//jndi 서비스 객체 생성
+	Context inContext = new InitialContext();
+	Context ctx = (Context) inContext.lookup("java:comp/env");
+	
+	//커넥션풀에 있는 커넥션 가져오기
+	DataSource ds = (DataSource)ctx.lookup("jdbc/studydb");
+	Connection conn = ds.getConnection();
+	
 	Statement stmt =  conn.createStatement();
 	ResultSet rs = stmt.executeQuery("select * from `user1`");
 	

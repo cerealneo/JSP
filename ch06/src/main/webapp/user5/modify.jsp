@@ -1,18 +1,24 @@
+<%@page import="javax.sql.*"%>
+<%@page import="javax.naming.*"%>
 <%@page import="entity.User5"%>
 <%@page import="java.sql.*"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String seq = request.getParameter("seq");
 
-String host = "jdbc:mysql://127.0.0.1:3306/studydb";
-String user = "root";
-String pass = "1234";
+//String host = "jdbc:mysql://127.0.0.1:3306/studydb";
+//String user = "root";
+//String pass = "1234";
 
 User5 user5= null;
 
 try{
-	Class.forName("com.mysql.cj.jdbc.Driver");
-	Connection conn = DriverManager.getConnection(host, user, pass);
+	//Class.forName("com.mysql.cj.jdbc.Driver");
+	//Connection conn = DriverManager.getConnection(host, user, pass);
+	
+	Context ctx = (Context) new InitialContext().lookup("java:comp/env");
+	DataSource ds = (DataSource)ctx.lookup("jdbc/studydb");
+	Connection conn = ds.getConnection();
 	
 	String sql = "select * from `user5` where `seq`=?";
 	PreparedStatement psmt = conn.prepareStatement(sql);
@@ -43,7 +49,7 @@ try{
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>user5::list</title>
+	<title>user5::수정</title>
 </head>
 <body>
 	<h3>user5수정</h3>

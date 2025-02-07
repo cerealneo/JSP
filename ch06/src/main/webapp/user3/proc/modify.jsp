@@ -1,3 +1,5 @@
+<%@page import="javax.sql.*"%>
+<%@page import="javax.naming.*"%>
 <%@page import="java.sql.*"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
@@ -10,16 +12,20 @@
 
 
 // 데이터베이스 처리
-String host = "jdbc:mysql://127.0.0.1:3306/studydb";
-String user = "root";
-String pass = "1234";
+//String host = "jdbc:mysql://127.0.0.1:3306/studydb";
+//String user = "root";
+//String pass = "1234";
 
 try{
 	//1단계 jdbc드라이버 로드
-	Class.forName("com.mysql.cj.jdbc.Driver");
+	//Class.forName("com.mysql.cj.jdbc.Driver");
 	
 	//2단계 데이터베이스 접속
-	Connection conn = DriverManager.getConnection(host, user, pass);
+	//Connection conn = DriverManager.getConnection(host, user, pass);
+	
+	Context ctx = (Context) new InitialContext().lookup("java:comp/env");
+	DataSource ds = (DataSource)ctx.lookup("jdbc/studydb");
+	Connection conn = ds.getConnection();
 	
 	//3단계 sql 실행 객체 생성
 	String sql = "UPDATE `user3` SET `name`=?, `birth`=?, `hp`=?, `addr`=? WHERE `uid`=?";
