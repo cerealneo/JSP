@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert</title>
+	<title>1.표현언어</title>
 	<!-- 
 		날짜 : 2025/02/11
 		이름 : 이민성
