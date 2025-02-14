@@ -27,9 +27,9 @@
 
 	<h4>get방식 데이터 전송</h4>
 	<form action="./proc/result1.jsp" method="get">
-		<input type"text" name="uid"><br> 
-		<input type"text" name="name"><br> 
-		<input type"number" name="age"><br> 
+		<input type "text" name="uid"><br> 
+		<input type "text" name="name"><br> 
+		<input type "number" name="age"><br> 
 		<input type="submit" value="전송하기">
 	</form>
 
