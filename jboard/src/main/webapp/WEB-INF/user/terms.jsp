@@ -1,12 +1,33 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<script>
+	document.addEventListener('DOMContentLoaded',function(){
+		
+		const btnNext = document.getElementsByClassName('btnNext')[0];
+		const check1 = document.getElementsByTagName('input')[0];
+		const check2 = document.getElementsByTagName('input')[1];
+		
+		btnNext.onclick = function(e){
+			
+			if(check1.checked && check2.checked){
+				return true;
+			}else{
+				alert('동의체크를 해야 합니다.');
+				return false;
+			}		
+		}
+	});
+	
+	
+</script>
+
         <main id="user">
             <section class="terms">
                 <h2 class="tit">사이트 이용약관</h2>
                 <table border="1">                    
                     <tr>
                         <td>
-                            <<textarea name="terms">${dto.terms}</textarea>
+                            <textarea name="terms">${dto.terms}</textarea>
                             <label><input type="checkbox" class="terms">&nbsp;동의합니다.</label>
                         </td>
                     </tr>

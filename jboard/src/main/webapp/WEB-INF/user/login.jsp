@@ -1,8 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<script>
+	const result = ${result};
+	if(result == 100){
+		alert('로그인 실패 했습니다.\n아이디, 비번을 다시 확인하세요.');
+	}else if(result == 101){
+		alert('정상적으로 로그아웃 되었습니다.');
+	}
+</script>
         <main id="user">
             <section class="login">
-                <form action="../article/list.jsp">                    
+                <form action="/jboard/user/login.do" method="post">                   
                     <table border="0">
                         <tr>
                             <td><img src="/jboard/images/login_ico_id.png" alt="아이디"/></td>
