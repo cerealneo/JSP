@@ -57,8 +57,6 @@ public class CheckController extends HttpServlet {
 		PrintWriter writer = resp.getWriter();
 		writer.println(json);
 		
-		
-		
 	}
 	
 	@Override
