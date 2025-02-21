@@ -2,19 +2,33 @@ package kr.co.jboard.dao;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import kr.co.jboard.dto.FileDTO;
 import kr.co.jboard.util.DBHelper;
+import kr.co.jboard.util.SQL;
 
-public class FileDAO extends DBHelper{
-	
+public class FileDAO extends DBHelper {
 	private static final FileDAO INSTANCE = new FileDAO();
 	public static FileDAO getInstance() {
 		return INSTANCE;
 	}
 	private FileDAO() {}
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public void insertFile(FileDTO dto) {
-		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.INSERT_FILE);
+			psmt.setInt(1, dto.getAno());
+			psmt.setString(2, dto.getoName());
+			psmt.setString(3, dto.getsName());
+			psmt.executeUpdate();
+			closeAll();
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 	}
 	
 	public FileDTO selectFile(int fno) {
@@ -32,5 +46,4 @@ public class FileDAO extends DBHelper{
 	public void deleteFile(int fno) {
 		
 	}
-
 }

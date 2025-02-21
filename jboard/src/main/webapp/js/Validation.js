@@ -201,9 +201,9 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 	// 6.휴대폰 유효성 검사(중복체크 포함)
 	const hpResult = document.getElementsByClassName('hpResult')[0];
-	
+
 	formRegister.hp.addEventListener('focusout', async function(){
-		
+	
 		const value = this.value;
 		
 		if(!value.match(reHp)){
