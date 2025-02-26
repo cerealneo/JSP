@@ -36,7 +36,7 @@
                      <c:forEach var="article" items="${requestScope.articles}">
 	                    <tr>
 	                        <td>${pageStartNum}</td>
-	                        <td><a href="/jboard/article/view.do">${article.title}[${article.comment}]</a></td>
+	                        <td><a href="/jboard/article/view.do?no=${article.no}">${article.title}[${article.comment}]</a></td>
 	                        <td>${article.nick}</td>
 	                        <td>${article.wdate}</td>
 	                        <td>${article.hit}</td>
