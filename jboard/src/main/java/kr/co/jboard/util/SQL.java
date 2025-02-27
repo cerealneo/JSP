@@ -29,13 +29,13 @@ public class SQL {
 	public static final String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `article`";
 	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM `article`";
 	public static final String SELECT_ARTICLE_WITH_FILE = "select "
-											+ "a.*,"
-											+ "f.*,"
-											+ "u.`nick` "
-											+ "FROM `article` AS a "
-											+ "LEFT JOIN `file` AS f ON a.no = f.ano "
-											+ "JOIN `user` AS u ON a.writer = u.uid "
-											+ "where a.`no`=?";
+														+ "a.*,"
+														+ "f.*,"
+														+ "u.`nick` "
+														+ "FROM `article` AS a "
+														+ "LEFT JOIN `file` AS f ON a.no = f.ano "
+														+ "JOIN `user` AS u ON a.writer = u.uid "
+														+ "where a.`no`=?";
 	public static final String SELECT_ALL_ARTICLE = "SELECT "
 													+ "a.*,"
 													+ "u.`nick` "
@@ -58,13 +58,33 @@ public class SQL {
 	public final static String LIMIT_FOR_SEARCH  = "LIMIT ?, 10";
 	
 	public static final String INSERT_ARTICLE = "insert into `article` set "
-													+ "`title`=?,"
-													+ "`content`=?,"
-													+ "`file`=?,"
-													+ "`writer`=?,"
-													+ "`regip`=?,"
-													+ "`wdate`=NOW()";
+												+ "`title`=?,"
+												+ "`content`=?,"
+												+ "`file`=?,"
+												+ "`writer`=?,"
+												+ "`regip`=?,"
+												+ "`wdate`=NOW()";
 	
+	// comment
+	public static final String INSERT_COMMENT = "insert into `comment` set "
+												+ "`parent`=?,"
+												+ "`content`=?,"
+												+ "`writer`=?,"
+												+ "`regip`=?,"
+												+ "`wdate`=NOW()";
+	public static final String SELECT_ALL_COMMENT_BY_PARENT = "SELECT "
+																+ "c.*, "
+																+ "u.`nick` "
+																+ "FROM `comment` AS c "
+																+ "JOIN `user` AS u ON c.writer = u.uid "
+																+ "WHERE `parent`=? "
+																+ "ORDER BY `cno` ASC";
+	public static final String SELECT_COMMENT_BY_CNO = "SELECT "
+														+ "c.*, "
+														+ "u.`nick` "
+														+ "FROM `comment` AS c "
+														+ "JOIN `user` AS u ON c.writer = u.uid "
+														+ "WHERE `cno`=?";
 	// file
 	public static final String INSERT_FILE = "insert into `file` set "
 											+ "`ano`=?,"

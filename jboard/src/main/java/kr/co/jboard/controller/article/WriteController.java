@@ -21,6 +21,7 @@ import kr.co.jboard.service.FileService;
 public class WriteController extends HttpServlet {
 	
 	private static final long serialVersionUID = 3781638474951751272L;
+	
 	private ArticleService service = ArticleService.INSTANCE;
 	private FileService fileService = FileService.INSTANCE;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
