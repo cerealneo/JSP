@@ -7,7 +7,6 @@
     <title>글보기</title>
     <link rel="stylesheet" href="/jboard/css/style.css"/>
     <script>
-    	
     	document.addEventListener('DOMContentLoaded', function(){
     		console.log('DOMContentLoaded...');
     		
