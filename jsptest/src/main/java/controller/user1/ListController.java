@@ -28,8 +28,10 @@ public class ListController extends HttpServlet {
 		// 데이터 공유(JSP에서 데이터를 출력하기 위해 request scope 저장)
 		req.setAttribute("dtos", dtos);
 				
+		
+		
 		// View forward
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/user1/list.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsptest/list.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
